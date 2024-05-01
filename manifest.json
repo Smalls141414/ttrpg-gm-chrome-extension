@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "TTRPG GM Tool",
+  "description": "Table-top RPG Game Master tool for D&D 5e",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/temp_symbol.png"
+  }
+}
