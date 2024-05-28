@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./popup.css" />
-  </head>
-  <body>
+<html>
+<body>
 
-    <h1>TTRPG GM Tool</h1>
-    <button>Test Button</button>
-    <ul></ul>
-    
-  </body>
+<meta charset="UTF-8">
+<link href="popup.css" type="text/css" rel="stylesheet">
+
+<div class="banner">
+    <div class="titlespace" >
+        <h1> TTRPG GM Tool </h1>
+    </div>
+</div>
+
+<p class="subjects">SPELLS:</p>
+<input type="text" placeholder="Prestidigitation..." class="textfield"> 
+<button class="button"> Search </button>
+
+
+<p class="subjects">NAMES:</p>
+<select class = "dropdown">
+<option value="human"> Human </option>
+    <option value="dwarf"> Dwarf </option>
+    <option value="elf"> Elf </option>
+    <option value="halfling"> Halfling </option>
+    <option value="dragonborn"> Dragonborn </option>
+    <option value="gnome"> Gnome </option>
+    <option value="halfelf"> Half-Elf </option>
+    <option value="halforc"> Half-Orc </option>
+    <option value="tiefling"> Tiefling </option>
+</select>
+<button class="button"> Search </button>
+
+
+<p class="subjects">REWARDS:</p>
+<select class = "dropdown">
+<option value="common"> Common </option>
+    <option value="uncommon"> Uncommon </option>
+    <option value="rare"> Rare </option>
+    <option value="veryrare"> Very Rare </option>
+    <option value="legendary"> Legendary </option>
+</select>
+<button class="button"> Search </button>
+
+
+</body>
 </html>
