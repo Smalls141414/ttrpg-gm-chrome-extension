@@ -15,10 +15,10 @@ font-size: 12px;
 background-color: #FF6F6F;
     border: 1px solid #FF6F6F;
     color: white;
-    padding: 8px 25px;
+    padding: 6px 20px;
     text-align: center;
-    display: inline-block;
     font-size: 12px;
+    display: inline;
     transition-duration: 0.4s;
 }
 
@@ -29,15 +29,17 @@ background-color: white;
 }
 
 .textfield {
-padding: 8px 10px;
+padding: 6px 10px;
     font-size: 12px;
-    width: 300px;
+    width: 140px;
+    display: inline;
 }
 
 .dropdown {
-padding: 8px 10px;
+padding: 6px 10px;
     font-size: 12px;
-    width: 330px;
+    width: 165px;
+    display: inline;
 }
 
 .banner {
@@ -46,4 +48,5 @@ background: #FF6F6F;
 
 body {
 background-color: #DFDFDF;
+width: 250px;
 }
