@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 <meta charset="UTF-8">
 <link href="popup.css" type="text/css" rel="stylesheet">
 
@@ -12,8 +11,10 @@
 </div>
 
 <p class="subjects">SPELLS:</p>
-<input type="text" placeholder="Prestidigitation..." class="textfield"> 
-<button class="button"> Search </button>
+<form id="spellForm">
+	<input type="text" placeholder="Prestidigitation..." class="textfield" id="spellText" autocomplete="off" required autofocus> 
+	<input class="button" type=submit value="Search">
+</form>
 
 
 <p class="subjects">NAMES:</p>
@@ -41,5 +42,6 @@
 </select>
 <button class="button"> Search </button>
 
+<script src="popup.js"></script>
 </body>
 </html>
