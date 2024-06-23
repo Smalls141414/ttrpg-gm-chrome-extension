@@ -1,5 +1,9 @@
 const sp = document.getElementById("spellForm").addEventListener('submit', findSpell);
+const na = document.getElementById("nameForm").addEventListener('submit', namesGet);
 
+/*
+	TODO: Add url verification before sending
+*/
 function findSpell(event)
 {
 	// Prevent standard form events and get spelltext
@@ -16,4 +20,29 @@ function findSpell(event)
 	
 	console.log(spellText);
 	window.open(url, '_blank').focus();
+}
+
+/**
+	TODO: Add custom species, add edit page, add get/set
+**/
+function namesGet(event)
+{
+	event.preventDefault();
+	let species = document.getElementById("species").value;
+	console.log(species);
+	
+	
+	/**
+	Chrome storage get/set functions
+	
+	chrome.storage.local.set({ key: value }).then(() => {
+		console.log("Value is set");
+	});
+
+	chrome.storage.local.get(["key"]).then((result) => {
+		console.log("Value is " + result.key);
+	});
+	
+	**/
+	
 }

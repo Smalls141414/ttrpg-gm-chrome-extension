@@ -28,6 +28,24 @@ background-color: white;
     color: black;
 }
 
+.editbutton {
+	float:right;
+background-color: #ffa199;
+    border: 1px solid #ffa199;
+    color: white;
+    padding: 3px 15px;
+    text-align: center;
+    font-size: 12px;
+    display: inline;
+    transition-duration: 0.4s;
+}
+
+.editbutton:hover {
+border: 1px solid #ffa199;
+background-color: white;
+    color: black;
+}
+
 .textfield {
 padding: 6px 10px;
     font-size: 12px;
