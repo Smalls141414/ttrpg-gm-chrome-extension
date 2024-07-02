@@ -10,29 +10,22 @@
     </div>
 </div>
 
-<p class="subjects">SPELLS:</p>
-<form id="spellForm">
-	<input type="text" placeholder="Prestidigitation..." class="textfield" id="spellText" autocomplete="off" required autofocus> 
-	<input class="button" type=submit value="Search">
-</form>
-
-
-<p class="subjects">NAMES:</p>
-<form id="nameForm">
-	<select class = "dropdown" id="species">
-		<option value="human"> Human </option>
-		<option value="dwarf"> Dwarf </option>
-		<option value="elf"> Elf </option>
-		<option value="halfling"> Halfling </option>
-		<option value="dragonborn"> Dragonborn </option>
-		<option value="gnome"> Gnome </option>
-		<option value="halfelf"> Half-Elf </option>
-		<option value="halforc"> Half-Orc </option>
-		<option value="tiefling"> Tiefling </option>
+<p class="subjects"><b>SPELLS SOURCE: </b><input class="switchbutton" value="Back" type=button id="back"></p>
+<form id="sourceForm">
+	<select class = "dropdown" id="source">
+		<option value="beyond"> D&D Beyond </option>
+		<option value="wikidot"> WikiDot </option>
 	</select>
-	<input class="button" type=submit value="Search"></button>
+	<input class="button" type=submit value="Select">
 </form>
 
-<script src="edit.js"></script>
+<p class="subjects"><b>REWARDS:</b></p>
+<form id="rewardAdd">
+	<input type="text" placeholder="Sword of Chaos..." class="textfield" id="rewardName" autocomplete="off" required>
+	<input type="text" placeholder="This sword is..." class="textfield" id="rewardDesc" autocomplete="off" required> 
+	<input class="button" type=submit value="ADD">
+</form>
+
+<script src="scripts/edit.js"></script>
 </body>
 </html>

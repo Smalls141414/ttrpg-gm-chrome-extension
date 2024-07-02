@@ -10,14 +10,14 @@
     </div>
 </div>
 
-<p class="subjects"><b>SPELLS:</b> </p>
+<p class="subjects"><b>SPELLS:</b> <input class="switchbutton" value="Settings" type=button id="settings"></p>
 <form id="spellForm">
 	<input type="text" placeholder="Prestidigitation..." class="textfield" id="spellText" autocomplete="off" required autofocus> 
 	<input class="button" type=submit value="Search">
 </form>
 
 
-<p class="subjects"><b>NAMES:</b> <input class="editbutton" value="Edit" type=submit></p>
+<p class="subjects"><b>NAMES:</b> </p>
 <form id="nameForm">
 	<select class = "dropdown" id="species">
 		<option value="human"> Human </option>
@@ -35,9 +35,9 @@
 
 
 
-<p class="subjects"><b>REWARDS:</b><input class="editbutton" value="Edit" type=submit></p>
+<p class="subjects"><b>REWARDS:</b></p>
 <form id="rewardForm">
-	<select class = "dropdown">
+	<select class = "dropdown" id="rarity">
 		<option value="common"> Common </option>
 		<option value="uncommon"> Uncommon </option>
 		<option value="rare"> Rare </option>
@@ -47,6 +47,6 @@
 	<input class="button" type=submit value="Search">
 </form>
 
-<script src="popup.js"></script>
+<script src="scripts/popup.js"></script>
 </body>
 </html>

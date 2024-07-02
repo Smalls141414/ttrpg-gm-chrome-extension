@@ -28,7 +28,7 @@ background-color: white;
     color: black;
 }
 
-.editbutton {
+.switchbutton {
 	float:right;
 background-color: #ffa199;
     border: 1px solid #ffa199;
@@ -40,7 +40,7 @@ background-color: #ffa199;
     transition-duration: 0.4s;
 }
 
-.editbutton:hover {
+.switchbutton:hover {
 border: 1px solid #ffa199;
 background-color: white;
     color: black;
