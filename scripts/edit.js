@@ -53,7 +53,7 @@ async function addReward(event)
 		}
 		
 		// Adds reward with reward number as ID - this allows for easy randomization later
-		chrome.storage.local.set({ [rewardID] : rewardName });
+		chrome.storage.local.set({ [rewardID] : [rewardName, rewardDesc] });
 		
 	});
 	

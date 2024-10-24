@@ -64,6 +64,25 @@ padding: 6px 10px;
 background: #FF6F6F;
 }
 
+.response {
+display:none;
+border: dotted 5px #ffa199;
+}
+
+#rewardForm {
+padding-bottom: 10px;
+}
+
+#responseTitle {
+font-weight: bold;
+text-align: center;
+}
+
+#responseDescription {
+	padding-left: 5px;
+	text-indent: 10px;
+}
+
 body {
 background-color: rgba(223,223,223,0.95);
 background-image: url('images/background.png');
