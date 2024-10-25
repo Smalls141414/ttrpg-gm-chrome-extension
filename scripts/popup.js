@@ -28,12 +28,15 @@ async function findSpell(event)
 	// Check chosen spell source
 	await chrome.storage.local.get(["spellSource"]).then((result) => {
 		console.log("Value is " + result.spellSource);
-		if(result.spellSource == "wikidot")
-		{
-			url = "http://dnd5e.wikidot.com/spell:" + spellText;
-		} else
+		if(result.spellSource == "beyond")
 		{
 			url = "http://www.dndbeyond.com/spells/" + spellText;
+		} else if(result.spellSource == "wikidot2024")
+		{
+			url = "http://dnd2024.wikidot.com/spell:" + spellText;
+		} else
+		{
+			url = "http://dnd5e.wikidot.com/spell:" + spellText;
 		}
 	});
 	
