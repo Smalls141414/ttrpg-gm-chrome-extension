@@ -10,7 +10,7 @@ Opening up the extension, users will find themselves faces with three major feat
  - Reward Search
 
 ### Spell Search
-Users will be able to see a textbox as well as a seach button. If the user is confused about a Dungeons and Dragons 5th Edition spell, the user will be able to type into the textbox the name of the spell they are confused about and the search functionality will open up a new tab with the ruleset courtesy of the D&D 5e Wikidot.
+Users will be able to see a textbox as well as a seach button. If the user is confused about a Dungeons and Dragons 5th Edition spell, the user will be able to type into the textbox the name of the spell they are confused about and the search functionality will open up a new tab with the ruleset courtesy of the D&D 5e Wikidot, D&D 2024 Wikidot, or D&D Beyond.
 ### Name Search
 Users will be able to select the race of a character they need a randomized name of and the function will choose a random name from a list for that character race. Users will be able to edit these lists as well as add custom races to add more names into. Preset names for the Dungeons and Dragons 5th Edition Players Handbook races will be present.
 ### Reward Search
