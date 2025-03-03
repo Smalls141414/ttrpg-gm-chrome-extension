@@ -1,6 +1,6 @@
 /**
 TODO:
-- Check Duplicates when storing reward
+- Check Duplicate Names when storing reward
 - Reward rarity
 **/
 

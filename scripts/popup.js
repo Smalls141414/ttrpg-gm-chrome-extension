@@ -8,11 +8,6 @@ const rsD = document.getElementById("responseDescription");
 
 document.getElementById("settings").addEventListener("click", loadEditPage);
 
-
-
-/*
-	TODO: Add url verification before sending
-*/
 async function findSpell(event)
 {
 	// Prevent standard form events and get spelltext
@@ -56,7 +51,7 @@ function namesGet(event)
 }
 
 /**
-	Rewards Function - Unfinished and Uncommented
+	Rewards Function
 **/
 async function rewardsGet(event)
 {
@@ -64,8 +59,9 @@ async function rewardsGet(event)
 	let rarity = document.getElementById("rarity").value;
 	console.log(rarity);
 	
-	// RARITY IS TEMPORARILY IGNORED
+	// Rarity is temporarily ignored
 
+	// Gets number of rewards, takes random reward from that number and returns
 	await chrome.storage.local.get(["rewardNum"]).then((num) => {
 		let randReward = "reward" + (Math.floor(Math.random() * (num.rewardNum + 1)));
 		console.log(randReward);
