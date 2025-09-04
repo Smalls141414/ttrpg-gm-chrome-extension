@@ -6,16 +6,16 @@ document.getElementById("back").addEventListener("click", loadStartPage);
 
 function onLoad()
 {
-	// Next - Add Initial Data on Load
-	const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
-
-	for (let i = 0; i < species.length; i++)
-	{
-		var option = document.createElement("option");
-		option.value = species[i];
-		option.text = species[i];
-		sd.appendChild(option);
-	}
+	chrome.storage.local.get({species}, function (result) {
+		let species = result.species;
+		for (let i = 0; i < species.length; i++)
+		{
+			var option = document.createElement("option");
+			option.value = species[i];
+			option.text = species[i];
+			sd.appendChild(option);
+		}
+	});
 }
 
 async function changeSource(event)
@@ -28,13 +28,6 @@ async function changeSource(event)
 		console.log("Source changed to " + source);
 	});
 }
-
-/**
-TODO:
-- Check Duplicate Names when storing rewards & names
-- Add more detailed comments
-**/
-
 
 async function addReward(event)
 {
