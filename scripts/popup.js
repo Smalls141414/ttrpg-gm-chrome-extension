@@ -42,12 +42,24 @@ async function findSpell(event)
 /**
 	Names Function - Unfinished
 **/
-function namesGet(event)
+async function namesGet(event)
 {
 	event.preventDefault();
 	let species = document.getElementById("species").value;
 	console.log(species);
 	
+	// Gets array of rewards and returns a random one from the list
+	await chrome.storage.local.get({ [species] : [] }, function (result) {
+		let names = result[species];
+		let randomIndex = Math.floor(Math.random() * names.length);
+
+		// Reward is then displayed in a previously hidden HTML block
+		console.log(names[randomIndex]);
+		rsT.innerHTML = names[randomIndex][0];
+		rsD.innerHTML = names[randomIndex][1];
+		rs.style.display = 'block';
+
+	});
 }
 
 /**
@@ -59,18 +71,18 @@ async function rewardsGet(event)
 	let rarity = document.getElementById("rarity").value;
 	console.log(rarity);
 	
-	// Rarity is temporarily ignored
+	// Gets array of rewards and returns a random one from the list
+	await chrome.storage.local.get({ [rarity] : [] }, function (result) {
+		let rewards = result[rarity];
+		let randomIndex = Math.floor(Math.random() * rewards.length);
+		console.log(rewards.length);
 
-	// Gets number of rewards, takes random reward from that number and returns
-	await chrome.storage.local.get(["rewardNum"]).then((num) => {
-		let randReward = "reward" + (Math.floor(Math.random() * (num.rewardNum + 1)));
-		console.log(randReward);
-		chrome.storage.local.get([randReward]).then((rew) => {
-			console.log(rew[randReward]);
-			rsT.innerHTML = rew[randReward][0];
-			rsD.innerHTML = rew[randReward][1];
-			rs.style.display = 'block';
-		});
+		// Reward is then displayed in a previously hidden HTML block
+		console.log(rewards[randomIndex]);
+		rsT.innerHTML = rewards[randomIndex][0];
+		rsD.innerHTML = rewards[randomIndex][1];
+		rs.style.display = 'block';
+
 	});
 }
 

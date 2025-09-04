@@ -20,17 +20,30 @@
 	<input class="button" type=submit value="Select">
 </form>
 
-<p class="subjects"><b>REWARDS:</b></p>
-<form id="rewardAdd">
-	<select class = "dropdown" id="rarity">
+<p class="subjects"><b>NAMES:</b></p>
+<form id="nameAdd">
+	<select class = "dropdown" id="species">
 		<option value="common"> Common </option>
 		<option value="uncommon"> Uncommon </option>
 		<option value="rare"> Rare </option>
 		<option value="veryrare"> Very Rare </option>
 		<option value="legendary"> Legendary </option>
 	</select>
-	<input type="text" placeholder="Sword of Chaos..." class="textfield" id="rewardName" autocomplete="off" required>
-	<input type="text" placeholder="This sword is..." class="textfield" id="rewardDesc" autocomplete="off" required> 
+	<input type="text" placeholder="Thorin Oakenshield" class="textfield" id="name" autocomplete="off" required>	
+	<input class="button" type=submit value="ADD">
+</form>
+
+<p class="subjects"><b>REWARDS:</b></p>
+<form id="rewardAdd">
+	<select class = "dropdown" id="rewardRarity">
+		<option value="common"> Common </option>
+		<option value="uncommon"> Uncommon </option>
+		<option value="rare"> Rare </option>
+		<option value="veryrare"> Very Rare </option>
+		<option value="legendary"> Legendary </option>
+	</select>
+	<input type="text" placeholder="Deck of Many Things" class="textfield" id="rewardName" autocomplete="off" required>
+	<input type="text" placeholder="This deck contains..." class="textfield" id="rewardDesc" autocomplete="off" required> 
 	<input class="button" type=submit value="ADD">
 </form>
 

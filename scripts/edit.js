@@ -1,11 +1,11 @@
 /**
 TODO:
-- Check Duplicate Names when storing reward
-- Reward rarity
+- Check Duplicate Names when storing rewards & names
 **/
 
 const sf = document.getElementById("sourceForm").addEventListener('submit', changeSource);
 const ra = document.getElementById("rewardAdd").addEventListener('submit', addReward);
+const na = document.getElementById("nameAdd").addEventListener('submit', addName);
 document.getElementById("back").addEventListener("click", loadStartPage);
 
 async function changeSource(event)
@@ -24,42 +24,49 @@ async function addReward(event)
 	event.preventDefault();
 	let rewardName = document.getElementById("rewardName").value;
 	let rewardDesc = document.getElementById("rewardDesc").value;
-	
-	//Set rewardNum if rewardNum does not exist
-	await chrome.storage.local.get(["rewardNum"]).then((num) => {
-		
-		// Records what number reward is being added
-		var rewardID;
-		
-		if(typeof num.rewardNum === 'undefined')
-		{
-			chrome.storage.local.set({ rewardNum : "0" }).then(() => {
-				console.log("rewardNum set to 0");
-			});
-			
-			rewardID = "reward0"; 
-			
-		} else
-		{
-			// This line parses the line as an integer and increasing it for the rewardNum
-			rewardID = parseInt(num.rewardNum) + 1;
-			
-			chrome.storage.local.set({ rewardNum : rewardID }).then(() => {
-				console.log("rewardNum increased");
-			});
-			
-			// This line adds the term "reward" to the start so that it may be queried with other rewards in storage
-			rewardID = "reward" + rewardID;
-		}
-		
-		// Adds reward with reward number as ID - this allows for easy randomization later
-		chrome.storage.local.set({ [rewardID] : [rewardName, rewardDesc] });
-		
+	let rarity = document.getElementById("rewardRarity").value;
+
+	// Get array based on reward rarity - set to empty array if does not exist
+	chrome.storage.local.get({ [rarity] : [] }, function (result) {
+		// Add new reward object with name and description to array	
+    	let rewards = result[rarity];
+		let newReward = [rewardName, rewardDesc];
+
+    	rewards.push(newReward);
+		console.log(rewards);
+
+		chrome.storage.local.set({ [rarity] : rewards }, function(){
+			console.log(rewardName + " successfully added to " + rarity);
+		});
 	});
-	
 }
+
+async function addName(event)
+{
+	event.preventDefault();
+	let species = document.getElementById("species").value;
+	let name = document.getElementById("name").value;
+
+	// Get array based on reward rarity - set to empty array if does not exist
+	chrome.storage.local.get({ [species] : [] }, function (result) {
+		// Add new reward object with name and description to array	
+    	let names = result[species];
+
+    	names.push(name);
+		console.log(names);
+
+		chrome.storage.local.set({ [species] : names }, function(){
+			console.log(name + " successfully added to " + species);
+		});
+	});
+}
+
 
 function loadStartPage(event)
 {
 	window.location="popup.html";
 }
+
+// Inspect Popup
+// chrome.storage.local.getKeys();
+// chrome.storage.local.get("keyName");
