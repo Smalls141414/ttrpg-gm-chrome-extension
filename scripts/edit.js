@@ -87,3 +87,5 @@ function loadStartPage(event)
 // Inspect Popup
 // chrome.storage.local.getKeys();
 // chrome.storage.local.get("keyName");
+
+onLoad();
