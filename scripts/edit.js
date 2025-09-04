@@ -1,12 +1,22 @@
-/**
-TODO:
-- Check Duplicate Names when storing rewards & names
-**/
-
 const sf = document.getElementById("sourceForm").addEventListener('submit', changeSource);
 const ra = document.getElementById("rewardAdd").addEventListener('submit', addReward);
 const na = document.getElementById("nameAdd").addEventListener('submit', addName);
+const sd = document.getElementById("speciesDropdown");
 document.getElementById("back").addEventListener("click", loadStartPage);
+
+function onLoad()
+{
+	// Next - Add Initial Data on Load
+	const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
+
+	for (let i = 0; i < species.length; i++)
+	{
+		var option = document.createElement("option");
+		option.value = species[i];
+		option.text = species[i];
+		sd.appendChild(option);
+	}
+}
 
 async function changeSource(event)
 {
@@ -18,6 +28,13 @@ async function changeSource(event)
 		console.log("Source changed to " + source);
 	});
 }
+
+/**
+TODO:
+- Check Duplicate Names when storing rewards & names
+- Add more detailed comments
+**/
+
 
 async function addReward(event)
 {
@@ -44,7 +61,7 @@ async function addReward(event)
 async function addName(event)
 {
 	event.preventDefault();
-	let species = document.getElementById("species").value;
+	let species = document.getElementById("speciesDropdown").value;
 	let name = document.getElementById("name").value;
 
 	// Get array based on reward rarity - set to empty array if does not exist

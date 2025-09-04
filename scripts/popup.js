@@ -1,12 +1,27 @@
 const sp = document.getElementById("spellForm").addEventListener('submit', findSpell);
 const na = document.getElementById("nameForm").addEventListener('submit', namesGet);
 const ra = document.getElementById("rewardForm").addEventListener('submit', rewardsGet);
+const sd = document.getElementById("speciesDropdown");
 const rs = document.getElementById("response");
 const rsT = document.getElementById("responseTitle");
 const rsD = document.getElementById("responseDescription");
 
-
 document.getElementById("settings").addEventListener("click", loadEditPage);
+
+const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
+
+function onLoad()
+{
+	const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
+
+	for (let i = 0; i < species.length; i++)
+	{
+		var option = document.createElement("option");
+		option.value = species[i];
+		option.text = species[i];
+		sd.appendChild(option);
+	}
+}
 
 async function findSpell(event)
 {
@@ -45,7 +60,7 @@ async function findSpell(event)
 async function namesGet(event)
 {
 	event.preventDefault();
-	let species = document.getElementById("species").value;
+	let species = document.getElementById("speciesDropdown").value;
 	console.log(species);
 	
 	// Gets array of rewards and returns a random one from the list
@@ -55,8 +70,8 @@ async function namesGet(event)
 
 		// Reward is then displayed in a previously hidden HTML block
 		console.log(names[randomIndex]);
-		rsT.innerHTML = names[randomIndex][0];
-		rsD.innerHTML = names[randomIndex][1];
+		rsT.innerHTML = names[randomIndex];
+		rsD.innerHTML = "";
 		rs.style.display = 'block';
 
 	});
@@ -90,3 +105,5 @@ function loadEditPage(event)
 {
 	window.location="edit.html";
 }
+
+onLoad();
