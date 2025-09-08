@@ -6,7 +6,7 @@ document.getElementById("back").addEventListener("click", loadStartPage);
 
 function onLoad()
 {
-	chrome.storage.local.get({species}, function (result) {
+	chrome.storage.local.get({species : []}, function (result) {
 		let species = result.species;
 		for (let i = 0; i < species.length; i++)
 		{

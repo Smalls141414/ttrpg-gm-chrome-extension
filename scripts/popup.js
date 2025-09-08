@@ -14,91 +14,106 @@ TODO:
 - Check Duplicate Names when storing rewards & names
 - Add Name & Reward Delete
 - Add Clear all Names & Clear all rewards
-- Add more clear feedback
+- Catch undefined names
+- Add more clear user feedback
 - Add more detailed comments
 **/
 
-
-function onLoad()
+async function onLoad()
 {
 	// Add initial data if it is not already added
-	chrome.storage.local.get({initialData : false}, function (result) {
-		// Add initial data if no current data
-		if(initialData != true)
+	chrome.storage.local.get("initialData", function (result) {
+		let initialData = result.initialData;
+
+		if(typeof initialData === 'undefined')
 		{
-			const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
-			const Human = ["John Doe"];
-			const Dwarf = [];
-			const Elf = [];
-			const Halfling = [];
-			const Dragonborn = [];
-			const Gnome = [];
-			const Half_Elf = [];
-			const Half_Orc = [];
-			const Tiefling = [];
-
-			const common = [];
-			const uncommon = [];
-			const rare = [];
-			const veryrare = [];
-			const legendary = [];
-
-			console.log("Adding Initial Data...");
-			chrome.storage.local.set({ "species" : species }, function(){
-				console.log("Initial Species Added");
-			});
-			chrome.storage.local.set({ "Human" : Human }, function(){
-				console.log("Human Names Added");
-			});
-			chrome.storage.local.set({ "Dwarf" : Dwarf }, function(){
-				console.log("Dwarf Names Added");
-			});
-			chrome.storage.local.set({ "Elf" : Elf }, function(){
-				console.log("Elf Names Added");
-			});
-			chrome.storage.local.set({ "Halfling" : Halfling }, function(){
-				console.log("Halfling Names Added");
-			});
-			chrome.storage.local.set({ "Dragonborn" : Dragonborn }, function(){
-				console.log("Dragonborn Names Added");
-			});
-			chrome.storage.local.set({ "Gnome" : Gnome }, function(){
-				console.log("Gnome Names Added");
-			});
-			chrome.storage.local.set({ "Half-Elf" : Half_Elf }, function(){
-				console.log("Half-Elf Names Added");
-			});
-			chrome.storage.local.set({ "Half-Orc" : Half_Orc }, function(){
-				console.log("Half-Orc Names Added");
-			});
-			chrome.storage.local.set({ "Tiefling" : Tiefling }, function(){
-				console.log("Tiefling Names Added");
-			});
-
-			chrome.storage.local.set({ "common" : common }, function(){
-				console.log("Common Rewards Added");
-			});
-			chrome.storage.local.set({ "uncommon" : uncommon }, function(){
-				console.log("Uncommon Rewards Added");
-			});
-			chrome.storage.local.set({ "rare" : rare }, function(){
-				console.log("Rare Rewards Added");
-			});
-			chrome.storage.local.set({ "veryrare" : veryrare }, function(){
-				console.log("Very Rare Rewards Added");
-			});
-			chrome.storage.local.set({ "legendary" : legendary }, function(){
-				console.log("Legendary Rewards Added");
-			});
-
+			addSampleData();
 			chrome.storage.local.set({ initialData : true }, function(){
 				console.log("Data Initialized - Enjoy!");
 			});
+			
+			// Once data is filled, add species to option dropdown
+			addSpecies();
+		} else
+		{
+			console.log("Data Already Initialized!");
+
+			addSpecies();
 		}
 	});
+}
 
-	// Next - Add Name & Reward Delete Options, Check for Duplicate Names
-	chrome.storage.local.get({species}, function (result) {
+async function addSampleData()
+{
+	const species = ["Human", "Dwarf", "Elf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
+	const Human = ["Aragorn"];
+	const Dwarf = ["Gimli"];
+	const Elf = ["Legolas"];
+	const Halfling = ["Frodo Baggins"];
+	const Dragonborn = ["Smaug"];
+	const Gnome = ["Barcus Wroot"];
+	const Half_Elf = ["Elrond"];
+	const Half_Orc = ["Garona Halforcen"];
+	const Tiefling = ["Karlach"];
+
+	const common = [];
+	const uncommon = [];
+	const rare = [];
+	const veryrare = [];
+	const legendary = [];
+
+	console.log("Adding Initial Data...");
+	chrome.storage.local.set({ "species" : species }, function(){
+		console.log("Initial Species Added");
+	});
+	chrome.storage.local.set({ "Human" : Human }, function(){
+		console.log("Human Names Added");
+	});
+	chrome.storage.local.set({ "Dwarf" : Dwarf }, function(){
+		console.log("Dwarf Names Added");
+	});
+	chrome.storage.local.set({ "Elf" : Elf }, function(){
+		console.log("Elf Names Added");
+	});
+	chrome.storage.local.set({ "Halfling" : Halfling }, function(){
+		console.log("Halfling Names Added");
+	});
+	chrome.storage.local.set({ "Dragonborn" : Dragonborn }, function(){
+		console.log("Dragonborn Names Added");
+	});
+	chrome.storage.local.set({ "Gnome" : Gnome }, function(){
+		console.log("Gnome Names Added");
+	});
+	chrome.storage.local.set({ "Half-Elf" : Half_Elf }, function(){
+		console.log("Half-Elf Names Added");
+	});
+	chrome.storage.local.set({ "Half-Orc" : Half_Orc }, function(){
+		console.log("Half-Orc Names Added");
+	});
+	chrome.storage.local.set({ "Tiefling" : Tiefling }, function(){
+		console.log("Tiefling Names Added");
+	});
+
+	chrome.storage.local.set({ "common" : common }, function(){
+		console.log("Common Rewards Added");
+	});
+	chrome.storage.local.set({ "uncommon" : uncommon }, function(){
+		console.log("Uncommon Rewards Added");
+	});
+	chrome.storage.local.set({ "rare" : rare }, function(){
+		console.log("Rare Rewards Added");
+	});
+	chrome.storage.local.set({ "veryrare" : veryrare }, function(){
+		console.log("Very Rare Rewards Added");
+	});
+	chrome.storage.local.set({ "legendary" : legendary }, function(){
+		console.log("Legendary Rewards Added");
+	});
+}
+
+async function addSpecies()
+{
+	chrome.storage.local.get({species : []}, function (result) {
 		let species = result.species;
 		for (let i = 0; i < species.length; i++)
 		{
