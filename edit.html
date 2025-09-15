@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="popup.css" type="text/css" rel="stylesheet">
+</head>
+
 <body>
-<meta charset="UTF-8">
-<link href="popup.css" type="text/css" rel="stylesheet">
 
 <div class="banner">
     <div class="titlespace" >
@@ -10,36 +14,64 @@
     </div>
 </div>
 
-<p class="subjects"><b>SPELLS SOURCE: </b><input class="switchbutton" value="Back" type=button id="back"></p>
-<form id="sourceForm">
-	<select class = "dropdown" id="source">
-		<option value="beyond"> D&D Beyond </option>
-		<option value="wikidot5e"> WikiDot 5e </option>
-		<option value="wikidot2024"> WikiDot 5e (2024) </option>
-	</select>
-	<input class="button" type=submit value="Select">
-</form>
+<section>
+	<p class="subjects"><b>SPELLS SOURCE: </b><input class="switchbutton" value="Back" type=button id="back"></p>
+	<form id="sourceForm">
+		<select class = "dropdown" id="source">
+			<option value="beyond"> D&D Beyond </option>
+			<option value="wikidot5e"> WikiDot 5e </option>
+			<option value="wikidot2024"> WikiDot 5e (2024) </option>
+		</select>
+		<input class="button" type="submit" value="Select">
+	</form>
+</section>
 
-<p class="subjects"><b>NAMES:</b></p>
-<form id="nameAdd">
-	<select class = "dropdown" id="speciesDropdown"></select>
-	<input type="text" placeholder="Thorin Oakenshield" class="textfield" id="name" autocomplete="off" required>	
-	<input class="button" type=submit value="ADD">
-</form>
+<section>
+	<p class="subjects"><b>NAMES:</b></p>
+	<form id="nameAdd">
+		<select class = "dropdown" id="speciesDropdown"></select>
+		<input type="text" placeholder="Thorin Oakenshield" class="textfield" id="name" autocomplete="off" required>	
+		<input class="button" type="submit" value="ADD">
+	</form>
+</section>
 
-<p class="subjects"><b>REWARDS:</b></p>
-<form id="rewardAdd">
-	<select class = "dropdown" id="rewardRarity">
+<section>
+	<form id="nameRemove">
+		<select class = "dropdown" id="speciesDropdownRemove"></select>
+		<select class = "dropdown" id="nameDropdown"></select>
+		<input class="button" type="submit" value="REMOVE">
+	</form>
+</section>
+
+<section>
+	<p class="subjects"><b>REWARDS:</b></p>
+	<form id="rewardAdd">
+		<select class="dropdown" id="rewardRarity">
+			<option value="common"> Common </option>
+			<option value="uncommon"> Uncommon </option>
+			<option value="rare"> Rare </option>
+			<option value="veryrare"> Very Rare </option>
+			<option value="legendary"> Legendary </option>
+		</select>
+		<input type="text" placeholder="Deck of Many Things" class="textfield" id="rewardName" autocomplete="off" required>
+		<input type="text" placeholder="This deck contains..." class="textfield" id="rewardDesc" autocomplete="off" required> 
+		<input class="button" type="submit" value="ADD">
+	</form>
+</section>
+
+<section>
+<form id="rewardRemove">
+	<select class = "dropdown" id="rarityDropdownRemove">
 		<option value="common"> Common </option>
 		<option value="uncommon"> Uncommon </option>
 		<option value="rare"> Rare </option>
 		<option value="veryrare"> Very Rare </option>
 		<option value="legendary"> Legendary </option>
 	</select>
-	<input type="text" placeholder="Deck of Many Things" class="textfield" id="rewardName" autocomplete="off" required>
-	<input type="text" placeholder="This deck contains..." class="textfield" id="rewardDesc" autocomplete="off" required> 
-	<input class="button" type=submit value="ADD">
+	<select class="dropdown" id="rewardDropdown"></select>
+	<input class="button" type="submit" value="REMOVE">
 </form>
+</section>
 
 <script src="scripts/edit.js"></script>
 </body>

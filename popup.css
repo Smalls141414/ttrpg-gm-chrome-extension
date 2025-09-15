@@ -92,3 +92,7 @@ background-size: cover;
 background-blend-mode: lighten;
 width: 250px;
 }
+
+section {
+    margin-bottom:10px;
+}

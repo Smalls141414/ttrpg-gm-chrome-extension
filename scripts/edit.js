@@ -1,8 +1,16 @@
 const sf = document.getElementById("sourceForm").addEventListener('submit', changeSource);
 const ra = document.getElementById("rewardAdd").addEventListener('submit', addReward);
 const na = document.getElementById("nameAdd").addEventListener('submit', addName);
+const nr = document.getElementById("nameRemove").addEventListener('submit', removeName);
+const rr = document.getElementById("rewardRemove").addEventListener('submit', removeReward);
+const sdr = document.getElementById("speciesDropdownRemove");
+const rdr = document.getElementById("rarityDropdownRemove");
 const sd = document.getElementById("speciesDropdown");
+const nd = document.getElementById("nameDropdown");
+const rd = document.getElementById("rewardDropdown");
 document.getElementById("back").addEventListener("click", loadStartPage);
+sdr.addEventListener('selectionchange', loadNames);
+//const rdr = document.getElementById("rarityDropdownRemove").addEventListener('selectionchange', loadRewards);
 
 function onLoad()
 {
@@ -14,6 +22,13 @@ function onLoad()
 			option.value = species[i];
 			option.text = species[i];
 			sd.appendChild(option);
+		}
+		for (let i = 0; i < species.length; i++)
+		{
+			var option = document.createElement("option");
+			option.value = species[i];
+			option.text = species[i];
+			sdr.appendChild(option);
 		}
 	});
 }
@@ -27,6 +42,8 @@ async function changeSource(event)
 	await chrome.storage.local.set({ spellSource : source }).then(() => {
 		console.log("Source changed to " + source);
 	});
+
+	onLoad();
 }
 
 async function addReward(event)
@@ -71,14 +88,43 @@ async function addName(event)
 	});
 }
 
+async function removeReward(event)
+{
+
+}
+
+async function removeName(event)
+{
+
+}
+
+async function loadNames(event)
+{
+	nr.options.length = 0;
+
+	let species = document.getElementById("speciesDropdown").value;
+	await chrome.storage.local.get({ [species] : [] }, function (result) {
+		let names = result[species];
+		
+		for (let i = 0; i < names.length; i++)
+		{
+			var option = document.createElement("option");
+			option.value = names[i];
+			option.text = names[i];
+			nr.appendChild(option);
+		}
+	});
+}
+
+async function loadRewards(event)
+{
+
+}
+
 
 function loadStartPage(event)
 {
 	window.location="popup.html";
 }
-
-// Inspect Popup
-// chrome.storage.local.getKeys();
-// chrome.storage.local.get("keyName");
 
 onLoad();

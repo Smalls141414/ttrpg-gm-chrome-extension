@@ -8,17 +8,6 @@ const rsD = document.getElementById("responseDescription");
 
 document.getElementById("settings").addEventListener("click", loadEditPage);
 
-/**
-TODO:
-- Fill Initial Data
-- Check Duplicate Names when storing rewards & names
-- Add Name & Reward Delete
-- Add Clear all Names & Clear all rewards
-- Catch undefined names
-- Add more clear user feedback
-- Add more detailed comments
-**/
-
 async function onLoad()
 {
 	// Add initial data if it is not already added
@@ -56,11 +45,11 @@ async function addSampleData()
 	const Half_Orc = ["Garona Halforcen"];
 	const Tiefling = ["Karlach"];
 
-	const common = [];
-	const uncommon = [];
-	const rare = [];
-	const veryrare = [];
-	const legendary = [];
+	const common = [["Potion of Healing", "You regain hit points when you drink this potion. The number of hit points is equal to 2d4 + 2. The potion’s red liquid glimmers when agitated."]];
+	const uncommon = [["Immovable Rod", "This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn’t move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success."]];
+	const rare = [["Ring of Feather Falling", "When you fall while wearing this ring, you descend 60 feet per round and take no damage from falling."]];
+	const veryrare = [["Bag of Devouring","This bag superficially resembles a bag of holding but is a feeding orifice for a gigantic extradimensional creature. Turning the bag inside out closes the orifice. The extradimensional creature attached to the bag can sense whatever is placed inside the bag. Animal or vegetable matter placed wholly in the bag is devoured and lost forever. When part of a living creature is placed in the bag, as happens when someone reaches inside it, there is a 50 percent chance that the creature is pulled inside the bag. A creature inside the bag can use its action to try to escape with a successful DC 15 Strength check. Another creature can use its action to reach into the bag to pull a creature out, doing so with a successful DC 20 Strength check (provided it isn’t pulled inside the bag first). Any creature that starts its turn inside the bag is devoured, its body destroyed. Inanimate objects can be stored in the bag, which can hold a cubic foot of such material. However, once each day, the bag swallows any objects inside it and spits them out into another plane of existence. The GM determines the time and plane. If the bag is pierced or torn, it is destroyed, and anything contained within it is transported to a random location on the Astral Plane."]];
+	const legendary = [["Belt of Cloud Giant Strength","While wearing this belt, your Strength score changes to a score granted by the belt. If your Strength is already equal to or greater than the belt’s score, the item has no effect on you. The Cloud Giant's Belt sets your strength score to 27."]];
 
 	console.log("Adding Initial Data...");
 	chrome.storage.local.set({ "species" : species }, function(){
@@ -113,6 +102,7 @@ async function addSampleData()
 
 async function addSpecies()
 {
+	// Get species list and add each species as an element of the dropdown
 	chrome.storage.local.get({species : []}, function (result) {
 		let species = result.species;
 		for (let i = 0; i < species.length; i++)
@@ -157,7 +147,7 @@ async function findSpell(event)
 }
 
 /**
-	Names Function - Unfinished
+	Names Get Function
 **/
 async function namesGet(event)
 {
@@ -165,12 +155,12 @@ async function namesGet(event)
 	let species = document.getElementById("speciesDropdown").value;
 	console.log(species);
 	
-	// Gets array of rewards and returns a random one from the list
+	// Gets array of names and returns a random one from the list
 	await chrome.storage.local.get({ [species] : [] }, function (result) {
 		let names = result[species];
 		let randomIndex = Math.floor(Math.random() * names.length);
 
-		// Reward is then displayed in a previously hidden HTML block
+		// Name is then displayed in a previously hidden HTML block
 		console.log(names[randomIndex]);
 		rsT.innerHTML = names[randomIndex];
 		rsD.innerHTML = "";
@@ -180,7 +170,7 @@ async function namesGet(event)
 }
 
 /**
-	Rewards Function
+	Rewards Get Function
 **/
 async function rewardsGet(event)
 {
