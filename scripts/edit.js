@@ -31,6 +31,8 @@ function onLoad()
 			sdr.appendChild(option);
 		}
 	});
+
+	loadNames();
 }
 
 async function changeSource(event)
